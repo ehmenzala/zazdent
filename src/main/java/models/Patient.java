@@ -69,7 +69,7 @@ public class Patient {
     private MedicalHistory medicalHistory;
 
     public enum MaritalStatus {
-        casado, soltero, vuido, divorciado;
+        casado, soltero, viudo, divorciado;
     }
 
     public Patient(int id, Guardian guardian, String lastNameFather, String lastNameMother, String name, int age, String birthplace, String dni, String email, String occupation, String phone, MaritalStatus maritalStatus, String address, String district, MedicalHistory medicalHistory) {

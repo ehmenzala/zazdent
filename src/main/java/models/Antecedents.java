@@ -53,7 +53,7 @@ public class Antecedents {
     @Column(name = "hemorrhage")
     private String hemorrhage;
 
-    @Column(name = "daily_brushing")
+    @Column(name = "daily_brushings")
     private int dailyBrushings;
 
     @Column(name = "oral_hygiene_items")

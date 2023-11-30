@@ -24,7 +24,7 @@ public class MedicalHistory {
     private Patient patient;
     
     @OneToOne
-    @JoinColumn(name = "clinical_exam")
+    @JoinColumn(name = "clinical_exam_id")
     private ClinicalExam clinicalExam;
     
     @OneToOne

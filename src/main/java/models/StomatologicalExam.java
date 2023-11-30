@@ -1,12 +1,16 @@
 package models;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "stomatological_exam")
 public class StomatologicalExam {
 
     @Id
@@ -22,7 +26,7 @@ public class StomatologicalExam {
     @JoinColumn(name = "intraoral_exam_id")
     private IntraoralExam intraoralExam;
     
-    @OneToOne(mappedBy = "somatologicalExam")
+    @OneToOne(mappedBy = "stomatologicalExam")
     private ClinicalExam clinicalExam;
 
     public StomatologicalExam(int id, IntraoralExam intraoralExam, ExtraoralExam extraoralExam, ClinicalExam clinicalExam) {

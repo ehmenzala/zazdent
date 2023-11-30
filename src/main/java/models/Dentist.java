@@ -28,14 +28,14 @@ public class Dentist {
     @Column(name = "last_name_father")
     private String lastNameFather;
     
-    @Column(name = "last_name_mpther")
+    @Column(name = "last_name_mother")
     private String lastNameMother;
     
     @Column(name = "dni")
     private String dni;
     
     @OneToOne(mappedBy = "dentist")
-    ClinicalExam clinicalExam;
+    private ClinicalExam clinicalExam;
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="dentist_specialties",
@@ -92,5 +92,9 @@ public class Dentist {
 
     public Set<Specialty> getSpecialties() {
         return specialties;
+    }
+
+    public ClinicalExam getClinicalExam() {
+        return clinicalExam;
     }
 }
