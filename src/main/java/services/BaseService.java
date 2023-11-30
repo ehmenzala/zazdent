@@ -7,7 +7,7 @@ import jakarta.persistence.Persistence;
 public class BaseService {
 
   protected EntityManager getEntityManager() {
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("medlab-persistence");
+    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("zazdent-persistence");
     return entityManagerFactory.createEntityManager();
   }
 }
