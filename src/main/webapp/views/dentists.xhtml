@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>ZAZDent | Dentistas</title>
         <link rel="stylesheet" href="/zazdentfaces/css/style.css"/>
@@ -45,6 +47,30 @@
                 En esta sección se encuentran todos los registros de dentistas de la
                 clínica.
             </p>
+            <h:form>
+                <p:dataTable lazy="false" value='#{dentistBean.dentists}' var='dentist'>
+                    <p:column headerText="ID" style="width: 10px;">
+                        <p:outputLabel value='#{dentist.id}' />
+                    </p:column>
+                    <p:column headerText="Nombres">
+                        <p:outputLabel value='#{dentist.name}' />
+                    </p:column>
+                    <p:column headerText="Apellido Paterno">
+                        <p:outputLabel value='#{dentist.lastNameFather}' />
+                    </p:column>
+                    <p:column headerText="Apellido Materno">
+                        <p:outputLabel value='#{dentist.lastNameMother}' />
+                    </p:column>
+                    <p:column headerText="DNI">
+                        <p:outputLabel value='#{dentist.dni}' />
+                    </p:column>
+                    <p:column headerText="Especialidad(es)">
+                        <ui:repeat value="#{dentist.specialties}" var="dentistSpecialty" varStatus="loopState">
+                            #{dentistSpecialty.name}<ui:fragment rendered="#{!loopState.last}">, </ui:fragment>
+                        </ui:repeat>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
         </main>
     </h:body>
 </html>
