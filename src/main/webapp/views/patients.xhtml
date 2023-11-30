@@ -17,18 +17,24 @@
             <nav class="menu container">
                 <ul class="menu__links" role="list">
                     <li class="menu__item">
-                        <a href="#" class="menu__link btn btn-secondary active">Pacientes</a>
+                        <h:outputLink class="menu__link btn btn-secondary active" value="/zazdentfaces/faces/views/patients.xhtml">
+                            Pacientes
+                        </h:outputLink>
                     </li>
                     <li class="menu__item">
-                        <a href="#" class="menu__link btn btn-secondary">Dentistas</a>
+                        <h:outputLink class="menu__link btn btn-secondary" value="/zazdentfaces/faces/views/dentists.xhtml">
+                            Dentistas
+                        </h:outputLink>
                     </li>
                     <li class="menu__item">
-                        <a href="#" class="menu__link btn btn-secondary">Especialidades</a>
+                        <h:outputLink class="menu__link btn btn-secondary" value="/zazdentfaces/faces/views/specialties.xhtml">
+                            Especialidades
+                        </h:outputLink>
                     </li>
                     <li class="menu__item">
-                        <a href="#" class="menu__link btn btn-secondary"
-                           >Historias Clínicas</a
-                        >
+                        <h:outputLink class="menu__link btn btn-secondary" value="/zazdentfaces/faces/views/medical-histories.xhtml">
+                            Historias Clínicas
+                        </h:outputLink>
                     </li>
                 </ul>
             </nav>
