@@ -46,8 +46,9 @@
                 En esta sección se encuentran todos los registros de especialidades de la
                 clínica.
             </p>
-            <h:form>
-                <p:dataTable lazy="false" value='#{specialtyBean.specialties}' var='specialty'>
+
+            <h:form id="specialties-table-form">
+                <p:dataTable id='specialties-table' lazy="false" value='#{specialtyBean.specialties}' var='specialty'>
                     <p:column headerText="ID" style="width: 10px;">
                         <p:outputLabel value='#{specialty.id}' />
                     </p:column>
@@ -58,6 +59,30 @@
                         <p:outputLabel value='#{specialty.description}' />
                     </p:column>
                 </p:dataTable>
+            </h:form>
+            <h:form>
+                <h2>Crear nueva especialidad</h2>
+                <p>Nombre especialidad</p>
+                <h:inputText value="#{specialtyBean.specialtyName}" />
+                <p>Descripción</p>
+                <h:inputText value="#{specialtyBean.specialtyDescription}" />
+                <p:commandButton value="Confirmar" action="#{specialtyBean.addSpecialty()}" update=":specialties-table-form:specialties-table" />
+            </h:form>
+            <h:form>
+                <h2>Modificar especialidad</h2>
+                <p>ID</p>
+                <h:inputText value="#{specialtyBean.specialtyId}" />
+                <p>Nombre especialidad</p>
+                <h:inputText value="#{specialtyBean.specialtyName}" />
+                <p>Descripción</p>
+                <h:inputText value="#{specialtyBean.specialtyDescription}" />
+                <p:commandButton value="Confirmar" action="#{specialtyBean.modifySpecialty()}" update=":specialties-table-form:specialties-table" />
+            </h:form>
+            <h:form>
+                <h2>Eliminar especialidad</h2>
+                <p>ID</p>
+                <h:inputText value="#{specialtyBean.specialtyId}" />
+                <p:commandButton value="Confirmar" action="#{specialtyBean.removeSpecialty()}" update=":specialties-table-form:specialties-table" />
             </h:form>
         </main>
     </h:body>
