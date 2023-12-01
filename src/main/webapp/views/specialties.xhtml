@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
@@ -40,13 +40,17 @@
                 </ul>
             </nav>
         </header>
-        <main class="container">
-            <h1 class="h1">Especialidades</h1>
+        <main class="container main">
+            <div class="content-header">
+                <h1 class="h1">Pacientes</h1>
+                <p:commandButton class="reload-btn" ariaLabel="Recargar la página" value="" action="#{specialtyBean.reload()}" >
+                    <img src="/zazdentfaces/assets/reload-icon.svg" alt="" />
+                </p:commandButton>
+            </div>
             <p>
                 En esta sección se encuentran todos los registros de especialidades de la
-                clínica.
+                clínica. Recuerde recargar la página para propagar los cambios.
             </p>
-
             <h:form id="specialties-table-form">
                 <p:dataTable id='specialties-table' lazy="false" value='#{specialtyBean.specialties}' var='specialty'>
                     <p:column headerText="ID" style="width: 10px;">
@@ -60,30 +64,52 @@
                     </p:column>
                 </p:dataTable>
             </h:form>
-            <h:form>
-                <h2>Crear nueva especialidad</h2>
-                <p>Nombre especialidad</p>
-                <h:inputText value="#{specialtyBean.specialtyName}" />
-                <p>Descripción</p>
-                <h:inputText value="#{specialtyBean.specialtyDescription}" />
-                <p:commandButton value="Confirmar" action="#{specialtyBean.addSpecialty()}" update=":specialties-table-form:specialties-table" />
-            </h:form>
-            <h:form>
-                <h2>Modificar especialidad</h2>
-                <p>ID</p>
-                <h:inputText value="#{specialtyBean.specialtyId}" />
-                <p>Nombre especialidad</p>
-                <h:inputText value="#{specialtyBean.specialtyName}" />
-                <p>Descripción</p>
-                <h:inputText value="#{specialtyBean.specialtyDescription}" />
-                <p:commandButton value="Confirmar" action="#{specialtyBean.modifySpecialty()}" update=":specialties-table-form:specialties-table" />
-            </h:form>
-            <h:form>
-                <h2>Eliminar especialidad</h2>
-                <p>ID</p>
-                <h:inputText value="#{specialtyBean.specialtyId}" />
-                <p:commandButton value="Confirmar" action="#{specialtyBean.removeSpecialty()}" update=":specialties-table-form:specialties-table" />
-            </h:form>
+            <button type="button" class="open-create-dialog btn btn-primary">
+                Nuevo
+            </button>
+            <button type="button" class="open-update-dialog btn btn-primary">
+                Actualizar
+            </button>
+            <button type="button" class="open-delete-dialog btn btn-primary">
+                Eliminar
+            </button>
         </main>
+        <dialog class="zazdent-create-dialog">
+            <h2>Crear especialidad</h2>
+            <h:form>
+                <p>Nombre especialidad</p>
+                <h:inputText value="#{specialtyBean.specialtyName}" />
+                <p>Descripción</p>
+                <h:inputText value="#{specialtyBean.specialtyDescription}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{specialtyBean.addSpecialty()}" update=":specialties-table-form:specialties-table" />
+                </div>
+            </h:form>
+        </dialog>
+        <dialog class="zazdent-update-dialog">
+            <h2>Actualizar especialidad</h2>
+            <h:form>
+                <p>ID</p>
+                <h:inputText value="#{specialtyBean.specialtyId}" />
+                <p>Nombre especialidad</p>
+                <h:inputText value="#{specialtyBean.specialtyName}" />
+                <p>Descripción</p>
+                <h:inputText value="#{specialtyBean.specialtyDescription}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{specialtyBean.modifySpecialty()}" update=":specialties-table-form:specialties-table" />
+                </div>
+            </h:form>
+        </dialog>
+        <dialog class="zazdent-delete-dialog">
+            <h2>Eliminar especialidad</h2>
+            <h:form>
+                <p>ID</p>
+                <h:inputText value="#{specialtyBean.specialtyId}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{specialtyBean.removeSpecialty()}" update=":specialties-table-form:specialties-table" />
+                </div>
+            </h:form>
+        </dialog>
+        <script src="/zazdentfaces/js/dialogs.js"></script>
     </h:body>
 </html>
