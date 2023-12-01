@@ -41,14 +41,19 @@
                 </ul>
             </nav>
         </header>
-        <main class="container">
-            <h1 class="h1">Dentistas</h1>
+        <main class="container main">
+            <div class="content-header">
+                <h1 class="h1">Dentistas</h1>
+                <p:commandButton class="reload-btn" ariaLabel="Recargar la página" value="" action="#{dentistBean.reload()}" >
+                    <img src="/zazdentfaces/assets/reload-icon.svg" alt="" />
+                </p:commandButton>
+            </div>
             <p>
                 En esta sección se encuentran todos los registros de dentistas de la
-                clínica.
+                clínica. Recuerde recargar la página para propagar los cambios.
             </p>
-            <h:form>
-                <p:dataTable lazy="false" value='#{dentistBean.dentists}' var='dentist'>
+            <h:form id="dentists-table-form">
+                <p:dataTable id="dentists-table" lazy="false" value='#{dentistBean.dentists}' var='dentist'>
                     <p:column headerText="ID" style="width: 10px;">
                         <p:outputLabel value='#{dentist.id}' />
                     </p:column>
@@ -71,6 +76,60 @@
                     </p:column>
                 </p:dataTable>
             </h:form>
+            <button type="button" class="open-create-dialog btn btn-primary">
+                Nuevo
+            </button>
+            <button type="button" class="open-update-dialog btn btn-primary">
+                Actualizar
+            </button>
+            <button type="button" class="open-delete-dialog btn btn-primary">
+                Eliminar
+            </button>
         </main>
+        <dialog class="zazdent-create-dialog">
+            <h2>Crear dentista</h2>
+            <h:form>
+                <p>Nombre</p>
+                <h:inputText value="#{dentistBean.dentistName}" />
+                <p>Apellido Paterno</p>
+                <h:inputText value="#{dentistBean.dentistLastNameFather}" />
+                <p>Apellido Materno</p>
+                <h:inputText value="#{dentistBean.dentistLastNameMother}" />
+                <p>DNI</p>
+                <h:inputText value="#{dentistBean.dentistDni}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{dentistBean.addDentist()}" update=":dentists-table-form:dentists-table" />
+                </div>
+            </h:form>
+        </dialog>
+        <dialog class="zazdent-update-dialog">
+            <h2>Actualizar dentista</h2>
+            <h:form>
+                <p>ID</p>
+                <h:inputText value="#{dentistBean.dentistId}" />
+                <p>Nombre</p>
+                <h:inputText value="#{dentistBean.dentistName}" />
+                <p>Apellido Paterno</p>
+                <h:inputText value="#{dentistBean.dentistLastNameFather}" />
+                <p>Apellido Materno</p>
+                <h:inputText value="#{dentistBean.dentistLastNameMother}" />
+                <p>SNI</p>
+                <h:inputText value="#{dentistBean.dentistDni}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{dentistBean.updateDentist()}" update=":dentists-table-form:dentists-table" />
+                </div>
+            </h:form>
+        </dialog>
+        <dialog class="zazdent-delete-dialog">
+            <h2>Eliminar dentista</h2>
+            <h:form>
+                <p>ID</p>
+                <h:inputText value="#{dentistBean.dentistId}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{dentistBean.removeDentist()}" update=":dentists-table-form:dentists-table" />
+                </div>
+            </h:form>
+        </dialog>
+        <script src="/zazdentfaces/js/dialogs.js"></script>
     </h:body>
 </html>

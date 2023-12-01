@@ -68,6 +68,14 @@ public class Dentist {
         this.dni = dni;
     }
     
+    public Dentist(int id, String name, String lastNameFather, String lastNameMother, String dni) {
+        this.id = id;
+        this.name = name;
+        this.lastNameFather = lastNameFather;
+        this.lastNameMother = lastNameMother;
+        this.dni = dni;
+    }
+    
     public Dentist() {}
 
     public int getId() {
