@@ -78,4 +78,8 @@ public class Guardian {
     public String getRelationship() {
         return relationship;
     }
+
+    public Patient getPatient() {
+        return patient;
+    }
 }
