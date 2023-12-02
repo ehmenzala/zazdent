@@ -72,13 +72,14 @@ public class Patient {
         casado, soltero, viudo, divorciado;
     }
 
-    public Patient(int id, Guardian guardian, String lastNameFather, String lastNameMother, String name, int age, String birthplace, String dni, String email, String occupation, String phone, MaritalStatus maritalStatus, String address, String district, MedicalHistory medicalHistory) {
+    public Patient(int id, Guardian guardian, String lastNameFather, String lastNameMother, String name, int age, LocalDate birthdate, String birthplace, String dni, String email, String occupation, String phone, MaritalStatus maritalStatus, String address, String district, MedicalHistory medicalHistory) {
         this.id = id;
         this.guardian = guardian;
         this.lastNameFather = lastNameFather;
         this.lastNameMother = lastNameMother;
         this.name = name;
         this.age = age;
+        this.birthdate = birthdate;
         this.birthplace = birthplace;
         this.dni = dni;
         this.email = email;
@@ -90,12 +91,48 @@ public class Patient {
         this.medicalHistory = medicalHistory;
     }
 
-    public Patient(Guardian guardian, String lastNameFather, String lastNameMother, String name, int age, String birthplace, String dni, String email, String occupation, String phone, MaritalStatus maritalStatus, String address, String district) {
+    public Patient(Guardian guardian, String lastNameFather, String lastNameMother, String name, int age, LocalDate birthdate, String birthplace, String dni, String email, String occupation, String phone, MaritalStatus maritalStatus, String address, String district) {
         this.guardian = guardian;
         this.lastNameFather = lastNameFather;
         this.lastNameMother = lastNameMother;
         this.name = name;
         this.age = age;
+        this.birthdate = birthdate;
+        this.birthplace = birthplace;
+        this.dni = dni;
+        this.email = email;
+        this.occupation = occupation;
+        this.phone = phone;
+        this.maritalStatus = maritalStatus;
+        this.address = address;
+        this.district = district;
+    }
+    
+    public Patient(int id, Guardian guardian, String lastNameFather, String lastNameMother, String name, int age, LocalDate birthdate, String birthplace, String dni, String email, String occupation, String phone, MaritalStatus maritalStatus, String address, String district) {
+        this.id = id;
+        this.guardian = guardian;
+        this.lastNameFather = lastNameFather;
+        this.lastNameMother = lastNameMother;
+        this.name = name;
+        this.age = age;
+        this.birthdate = birthdate;
+        this.birthplace = birthplace;
+        this.dni = dni;
+        this.email = email;
+        this.occupation = occupation;
+        this.phone = phone;
+        this.maritalStatus = maritalStatus;
+        this.address = address;
+        this.district = district;
+    }
+    
+    public Patient(int id, String lastNameFather, String lastNameMother, String name, int age, LocalDate birthdate, String birthplace, String dni, String email, String occupation, String phone, MaritalStatus maritalStatus, String address, String district) {
+        this.id = id;
+        this.lastNameFather = lastNameFather;
+        this.lastNameMother = lastNameMother;
+        this.name = name;
+        this.age = age;
+        this.birthdate = birthdate;
         this.birthplace = birthplace;
         this.dni = dni;
         this.email = email;

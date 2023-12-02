@@ -5,7 +5,7 @@ import models.Patient;
 
 public interface PatientRepository {
   
-   public int add(Patient patient);
+    public int add(Patient patient);
     
     public Patient getById(int id);
     

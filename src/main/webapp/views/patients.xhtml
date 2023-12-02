@@ -40,14 +40,19 @@
                 </ul>
             </nav>
         </header>
-        <main class="container">
-            <h1 class="h1">Pacientes</h1>
+        <main class="container main">
+            <div class="content-header">
+                <h1 class="h1">Pacientes</h1>
+                <p:commandButton class="reload-btn" ariaLabel="Recargar la página" value="" action="#{patientBean.reload()}" >
+                    <img src="/zazdentfaces/assets/reload-icon.svg" alt="" />
+                </p:commandButton>
+            </div>
             <p>
                 En esta sección se encuentran todos los registros de pacientes de la
-                clínica.
+                clínica. Recuerde recargar la página para propagar los cambios.
             </p>
-            <h:form>
-                <p:dataTable lazy="false" value='#{patientBean.patients}' var='patient'>
+            <h:form id="patients-table-form">
+                <p:dataTable id="patients-table" lazy="false" value='#{patientBean.patients}' var='patient'>
                     <p:column headerText="ID" style="width: 10px;">
                         <h:outputText value='#{patient.id}' />
                     </p:column>
@@ -89,6 +94,99 @@
                     </p:column>
                 </p:dataTable>
             </h:form>
+            <button type="button" class="open-create-dialog btn btn-primary">
+                Nuevo
+            </button>
+            <button type="button" class="open-update-dialog btn btn-primary">
+                Actualizar
+            </button>
+            <button type="button" class="open-delete-dialog btn btn-primary">
+                Eliminar
+            </button>
         </main>
+        <dialog class="zazdent-create-dialog">
+            <h2>Crear paciente</h2>
+            <h:form>
+                <p>Nombre</p>
+                <h:inputText value="#{patientBean.patientName}" />
+                <p>Apellido Paterno</p>
+                <h:inputText value="#{patientBean.patientLastNameFather}" />
+                <p>Apellido Materno</p>
+                <h:inputText value="#{patientBean.patientLastNameMother}" />
+                <p>Edad</p>
+                <h:inputText value="#{patientBean.patientAge}" />
+                <p>Lugar de Nacimiento</p>
+                <h:inputText value="#{patientBean.patientBirthplace}" />
+                <p>Nacimiento</p>
+                <h:inputText value="#{patientBean.patientBirthdate}" />
+                <p>DNI</p>
+                <h:inputText value="#{patientBean.patientDni}" />
+                <p>Email</p>
+                <h:inputText value="#{patientBean.patientEmail}" />
+                <p>Ocupación</p>
+                <h:inputText value="#{patientBean.patientOccupation}" />
+                <p>Teléfono</p>
+                <h:inputText value="#{patientBean.patientPhone}" />
+                <p>Estado civil</p>
+                <h:inputText value="#{patientBean.patientMaritalStatus}" />
+                <p>Dirección</p>
+                <h:inputText value="#{patientBean.patientAddress}" />
+                <p>Distrito</p>
+                <h:inputText value="#{patientBean.patientDistrict}" />
+                <h3>Datos de apoderado (Opcional)</h3>
+                <p>ID de apoderado</p>
+                <h:inputText value="#{patientBean.guardianId}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{patientBean.addPatient()}" />
+                </div>
+            </h:form>
+        </dialog>
+        <dialog class="zazdent-update-dialog">
+            <h2>Actualizar paciente</h2>
+            <h:form>
+                <p>ID</p>
+                <h:inputText value="#{patientBean.patientId}" />
+                <p>Nombre</p>
+                <h:inputText value="#{patientBean.patientName}" />
+                <p>Apellido Paterno</p>
+                <h:inputText value="#{patientBean.patientLastNameFather}" />
+                <p>Apellido Materno</p>
+                <h:inputText value="#{patientBean.patientLastNameMother}" />
+                <p>Edad</p>
+                <h:inputText value="#{patientBean.patientAge}" />
+                <p>Lugar de Nacimiento</p>
+                <h:inputText value="#{patientBean.patientBirthplace}" />
+                <p>Nacimiento</p>
+                <h:inputText value="#{patientBean.patientBirthdate}" />
+                <p>DNI</p>
+                <h:inputText value="#{patientBean.patientDni}" />
+                <p>Email</p>
+                <h:inputText value="#{patientBean.patientEmail}" />
+                <p>Ocupación</p>
+                <h:inputText value="#{patientBean.patientOccupation}" />
+                <p>Teléfono</p>
+                <h:inputText value="#{patientBean.patientPhone}" />
+                <p>Estado civil</p>
+                <h:inputText value="#{patientBean.patientMaritalStatus}" />
+                <p>Dirección</p>
+                <h:inputText value="#{patientBean.patientAddress}" />
+                <p>Distrito</p>
+                <h:inputText value="#{patientBean.patientDistrict}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{patientBean.updatePatient()}" />
+                </div>
+            </h:form>
+        </dialog>
+        <dialog class="zazdent-delete-dialog">
+            <h2>Eliminar paciente</h2>
+            <h:form>
+                <p>ID</p>
+                <h:inputText value="#{patientBean.patientId}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{patientBean.removePatient()}" />
+                </div>
+            </h:form>
+        </dialog>
+        <script src="/zazdentfaces/js/dialogs.js"></script>
     </h:body>
 </html>
