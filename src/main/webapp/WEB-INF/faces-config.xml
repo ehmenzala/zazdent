@@ -38,4 +38,9 @@
         <managed-bean-class>beans.PatientBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>guardianBean</managed-bean-name>
+        <managed-bean-class>beans.GuardianBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

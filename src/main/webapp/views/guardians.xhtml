@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>ZAZDent | Apoderados</title>
+        <link rel="stylesheet" href="/zazdentfaces/css/style.css"/>
+    </h:head>
+    <h:body>
+        <header class="header">
+            <div class="header-content container">
+                <h2 class="header-content__logo">ZAZDent</h2>
+                <p class="header-content__title">
+                    Intranet de Historias Clínicas Odontológicas
+                </p>
+            </div>
+            <nav class="menu container">
+                <ul class="menu__links" role="list">
+                    <li class="menu__item">
+                        <h:outputLink class="menu__link btn btn-secondary" value="/zazdentfaces/faces/views/patients.xhtml">
+                            Pacientes
+                        </h:outputLink>
+                    </li>
+                    <li class="menu__item">
+                        <h:outputLink class="menu__link btn btn-secondary" value="/zazdentfaces/faces/views/dentists.xhtml">
+                            Dentistas
+                        </h:outputLink>
+                    </li>
+                    <li class="menu__item">
+                        <h:outputLink class="menu__link btn btn-secondary" value="/zazdentfaces/faces/views/specialties.xhtml">
+                            Especialidades
+                        </h:outputLink>
+                    </li>
+                    <li class="menu__item">
+                        <h:outputLink class="menu__link btn btn-secondary" value="/zazdentfaces/faces/views/medical-histories.xhtml">
+                            Historias Clínicas
+                        </h:outputLink>
+                    </li>
+                    <li class="menu__item">
+                        <h:outputLink class="menu__link btn btn-secondary active" value="/zazdentfaces/faces/views/guardians.xhtml">
+                            Apoderados
+                        </h:outputLink>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="container main">
+            <div class="content-header">
+                <h1 class="h1">Apoderados</h1>
+                <p:commandButton class="reload-btn" ariaLabel="Recargar la página" value="" action="#{guardianBean.reload()}" >
+                    <img src="/zazdentfaces/assets/reload-icon.svg" alt="" />
+                </p:commandButton>
+            </div>
+            <p>
+                En esta sección se encuentran todos los registros de apoderados de la
+                clínica. Recuerde recargar la página para propagar los cambios.
+            </p>
+            <h:form id="guardians-table-form">
+                <p:dataTable id="guardians-table" lazy="false" value='#{guardianBean.guardians}' var='guardian'>
+                    <p:column headerText="ID" style="width: 10px;">
+                        <p:outputLabel value='#{guardian.id}' />
+                    </p:column>
+                    <p:column headerText="Nombres">
+                        <p:outputLabel value='#{guardian.name}' />
+                    </p:column>
+                    <p:column headerText="Apellido Paterno">
+                        <p:outputLabel value='#{guardian.lastNameFather}' />
+                    </p:column>
+                    <p:column headerText="Apellido Materno">
+                        <p:outputLabel value='#{guardian.lastNameMother}' />
+                    </p:column>
+                    <p:column headerText="DNI">
+                        <p:outputLabel value='#{guardian.dni}' />
+                    </p:column>
+                    <p:column headerText="Relación">
+                        <p:outputLabel value='#{guardian.relationship}' />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+            <button type="button" class="open-create-dialog btn btn-primary">
+                Nuevo
+            </button>
+            <button type="button" class="open-update-dialog btn btn-primary">
+                Actualizar
+            </button>
+            <button type="button" class="open-delete-dialog btn btn-primary">
+                Eliminar
+            </button>
+        </main>
+        <dialog class="zazdent-create-dialog">
+            <h2>Crear dentista</h2>
+            <h:form>
+                <p>Nombre</p>
+                <h:inputText value="#{guardianBean.guardianName}" />
+                <p>Apellido Paterno</p>
+                <h:inputText value="#{guardianBean.guardianLastNameFather}" />
+                <p>Apellido Materno</p>
+                <h:inputText value="#{guardianBean.guardianLastNameMother}" />
+                <p>DNI</p>
+                <h:inputText value="#{guardianBean.guardianDni}" />
+                <p>Parentesco</p>
+                <h:inputText value="#{guardianBean.guardianRelationship}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{guardianBean.addGuardian()}" update=":guardians-table-form:guardians-table" />
+                </div>
+            </h:form>
+        </dialog>
+        <dialog class="zazdent-update-dialog">
+            <h2>Actualizar dentista</h2>
+            <h:form>
+                <p>ID</p>
+                <h:inputText value="#{guardianBean.guardianId}" />
+                <p>Nombre</p>
+                <h:inputText value="#{guardianBean.guardianName}" />
+                <p>Apellido Paterno</p>
+                <h:inputText value="#{guardianBean.guardianLastNameFather}" />
+                <p>Apellido Materno</p>
+                <h:inputText value="#{guardianBean.guardianLastNameMother}" />
+                <p>DNI</p>
+                <h:inputText value="#{guardianBean.guardianDni}" />
+                <p>Parentesco</p>
+                <h:inputText value="#{guardianBean.guardianRelationship}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{guardianBean.updateGuardian()}" update=":guardians-table-form:guardians-table" />
+                </div>
+            </h:form>
+        </dialog>
+        <dialog class="zazdent-delete-dialog">
+            <h2>Eliminar dentista</h2>
+            <h:form>
+                <p>ID</p>
+                <h:inputText value="#{guardianBean.guardianId}" />
+                <div>
+                    <p:commandButton value="Confirmar" action="#{guardianBean.removeGuardian()}" update=":guardians-table-form:guardians-table" />
+                </div>
+            </h:form>
+        </dialog>
+        <script src="/zazdentfaces/js/dialogs.js"></script>
+    </h:body>
+</html>

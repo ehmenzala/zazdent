@@ -44,6 +44,15 @@ public class Guardian {
         this.relationship = relationship;
         this.patient = patient;
     }
+    
+    public Guardian(int id, String lastNameFather, String lastNameMother, String name, String dni, String relationship) {
+        this.id = id;
+        this.lastNameFather = lastNameFather;
+        this.lastNameMother = lastNameMother;
+        this.name = name;
+        this.dni = dni;
+        this.relationship = relationship;
+    }
 
     public Guardian(String lastNameFather, String lastNameMother, String name, String dni, String relationship) {
         this.lastNameFather = lastNameFather;
