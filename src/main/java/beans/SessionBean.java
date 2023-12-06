@@ -12,7 +12,7 @@ public class SessionBean {
 
     public void authenticate() throws IOException {
         if (username.equals(allowedUser) && passwd.equals(allowedPasswd)) {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/zazdentfaces/faces/views/doctors.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/zazdentfaces/faces/views/dentists.xhtml");
         } else {
             System.out.println("Access denied");
         }
